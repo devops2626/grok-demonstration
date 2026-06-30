@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grok Demonstration</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: linear-gradient(to right, #1e3a8a, #3b82f6); color: white; }
+        h1 { font-size: 3em; }
+        button { padding: 15px 30px; font-size: 1.2em; background: #fff; color: #1e3a8a; border: none; border-radius: 50px; cursor: pointer; margin: 20px; }
+        button:hover { transform: scale(1.1); }
+        #output { margin-top: 30px; font-size: 1.5em; min-height: 100px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Grok's Demonstration</h1>
+    <p>Built by Grok AI - Explore the Universe!</p>
+    <button onclick="grokMagic()">Unleash Grok Magic</button>
+    <div id="output"></div>
+
+    <script>
+        function grokMagic() {
+            const messages = [
+                "Understanding the Universe one query at a time!",
+                "Truth-seeking activated!",
+                "xAI is here to help!",
+                "Maximum curiosity engaged!",
+                "Hello from the future!"
+            ];
+            const random = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('output').innerHTML = `<p>${random}</p>`;
+            createStars();
+        }
+
+        function createStars() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.textContent = '⭐';
+                    star.style.position = 'absolute';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.fontSize = '2em';
+                    star.style.transition = 'all 2s';
+                    document.body.appendChild(star);
+                    setTimeout(() => star.remove(), 3000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+</html>
