@@ -1,0 +1,36 @@
+name: Azure OIDC Login & Demo Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write    # Required for OIDC
+  contents: read
+
+jobs:
+  azure-login-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login (OIDC)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Run Azure CLI commands
+        run: |
+          echo "✅ Successfully logged in to Azure via OIDC!"
+          az account show
+          az group list --output table
+
+      - name: (Optional) Deploy example
+        run: |
+          echo "Add your deployment steps here (e.g. az webapp deploy, Static Web Apps, etc.)"
+          # Example for Static Web App:
+          # az staticwebapp create ...
