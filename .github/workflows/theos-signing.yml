@@ -1,0 +1,4 @@
+# OR overwrite it with your real YAML content using cat again:
+cat > .github/workflows/theos-signing.yml << 'EOF'
+# [PASTE YOUR REAL YAML HERE - e.g., the full theos build/sign workflow]
+EOF# [Paste the entire YAML content here]
